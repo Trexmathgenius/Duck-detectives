@@ -1,0 +1,30 @@
+{
+  "name": "duck-detectives",
+  "productName": "Duck Detectives",
+  "version": "1.28.1",
+  "description": "A cozy sandbox mystery. Play a duck detective exploring an infinite forest.",
+  "author": "Travis Peebles",
+  "main": "main.js",
+  "scripts": {
+    "sync": "node scripts/sync.js",
+    "start": "npm run sync && electron .",
+    "dist": "npm run sync && electron-builder",
+    "dist:win": "npm run sync && electron-builder --win",
+    "dist:mac": "npm run sync && electron-builder --mac",
+    "dist:linux": "npm run sync && electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.duckdetectives.game",
+    "productName": "Duck Detectives",
+    "files": ["main.js", "preload.js", "game/**/*", "package.json"],
+    "directories": { "output": "dist" },
+    "win": { "target": ["portable", "nsis"], "icon": "build/icon.png" },
+    "mac": { "target": ["dmg"], "category": "public.app-category.games", "icon": "build/icon.png" },
+    "linux": { "target": ["AppImage"], "category": "Game", "icon": "build/icon.png" },
+    "artifactName": "DuckDetectives-${version}-${os}-${arch}.${ext}"
+  }
+}
