@@ -8,7 +8,7 @@ function createWindow() {
     icon: path.join(__dirname, 'build', 'icon.png'),
     webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
-  win.loadFile(path.join(__dirname, 'game', 'popup.html'), { query: { full: '1' } });
+  win.loadFile(path.join(__dirname, 'game', 'game', 'popup.html'), { query: { full: '1' } });
   win.webContents.setWindowOpenHandler(({ url }) => { shell.openExternal(url); return { action: 'deny' }; });
 }
 
